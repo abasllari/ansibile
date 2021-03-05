@@ -1,0 +1,24 @@
+---
+
+-
+    name: vhd extend
+    hosts: all
+    become: yes
+    tasks: 
+       - name: format and create sdb1 part
+         shell: /bin/echo -e "nn\np\n1\n\n\nt\n8e\nw" | fdisk /dev/sde
+        
+
+         #- name: pvreate
+         #shell: pvcreate /dev/sdb1
+
+       - name: vgextend 
+         shell: vgextend cl /dev/sde1
+
+       - name:  lvextend
+         shell: lvextend -l +100%FREE /dev/cl/root
+     
+       - name: resize
+         shell: fsadm resize /dev/cl/root
+
+       

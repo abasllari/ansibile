@@ -1,0 +1,34 @@
+---
+-  
+   name: 'Extend partition'
+   hosts: all
+   remote_user: user
+   become: yes
+   tasks:
+    
+      -  
+          name: 'execute test command'
+          command: cat/etc/hosts    
+
+      -  
+        #  name: 'Format the disk'
+        # filesystem:
+        # fstype: ext4
+        # dev: /dev/sdb1  
+
+      -  
+        # name: 'Create Directory'
+        # file: 
+        # path: /mnt/sdb1
+        # state: directory
+        # mode: '0755'
+     
+      -  
+        #name: 'Mount Partition' 
+        #mount: 
+        #path: /de/sdb1
+        #src: /dev/sdb1
+        #fstype: ext4
+        #state: mounted
+
+...
